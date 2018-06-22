@@ -100,7 +100,7 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.paddingY = paddingY
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var paddingX: CGFloat = 5 {
@@ -108,17 +108,17 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.paddingX = paddingX
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var marginY: CGFloat = 2 {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var marginX: CGFloat = 5 {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -129,27 +129,27 @@ open class TagListView: UIView {
     }
     @IBInspectable open var alignment: Alignment = .left {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var shadowColor: UIColor = UIColor.white {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var shadowRadius: CGFloat = 0 {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var shadowOffset: CGSize = CGSize.zero {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var shadowOpacity: Float = 0 {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -158,7 +158,7 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.enableRemoveButton = enableRemoveButton
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -167,7 +167,7 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.removeButtonIconSize = removeButtonIconSize
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
     @IBInspectable open dynamic var removeIconLineWidth: CGFloat = 1 {
@@ -175,7 +175,7 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.removeIconLineWidth = removeIconLineWidth
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -184,7 +184,7 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.removeIconLineColor = removeIconLineColor
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -193,13 +193,13 @@ open class TagListView: UIView {
             for tagView in tagViews {
                 tagView.textFont = textFont
             }
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
     @IBInspectable open dynamic var maximalNumberOfLines: UInt = 0 {
         didSet {
-            rearrangeViews()
+            setNeedsLayout()
         }
     }
 
@@ -357,7 +357,7 @@ open class TagListView: UIView {
             self.tagViews.append(tagView)
             tagBackgroundViews.append(UIView(frame: tagView.bounds))
         }
-        rearrangeViews()
+        setNeedsLayout()
         return tagViews
     }
 
@@ -370,7 +370,7 @@ open class TagListView: UIView {
     open func addTagView(_ tagView: TagView) -> TagView {
         tagViews.append(tagView)
         tagBackgroundViews.append(UIView(frame: tagView.bounds))
-        rearrangeViews()
+        setNeedsLayout()
 
         return tagView
     }
@@ -379,7 +379,7 @@ open class TagListView: UIView {
     open func insertTagView(_ tagView: TagView, at index: Int) -> TagView {
         tagViews.insert(tagView, at: index)
         tagBackgroundViews.insert(UIView(frame: tagView.bounds), at: index)
-        rearrangeViews()
+        setNeedsLayout()
 
         return tagView
     }
@@ -405,7 +405,7 @@ open class TagListView: UIView {
             tagBackgroundViews.remove(at: index)
         }
 
-        rearrangeViews()
+        setNeedsLayout()
     }
 
     open func removeAllTags() {
@@ -415,7 +415,7 @@ open class TagListView: UIView {
         }
         tagViews = []
         tagBackgroundViews = []
-        rearrangeViews()
+        setNeedsLayout()
     }
 
     open func selectedTags() -> [TagView] {

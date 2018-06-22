@@ -18,8 +18,13 @@ class ViewController: UIViewController, TagListViewDelegate {
         super.viewDidLoad()
         
         tagListView.delegate = self
+        tagListView.maximalNumberOfLines = 2
         tagListView.addTag("TagListView")
-        tagListView.addTag("TEAChart")
+        tagListView.addTag("TEAChart1")
+        tagListView.addTag("TEAChart2")
+        tagListView.addTag("TEAChart3")
+        tagListView.addTag("TEAChart4")
+        tagListView.addTag("TEAChart5")
         tagListView.addTag("To Be Removed")
         tagListView.addTag("To Be Removed")
         tagListView.addTag("Quark Shell")

@@ -81,7 +81,7 @@ open class TagView: UIButton {
         }
     }
     
-    var textFont: UIFont = UIFont.systemFont(ofSize: 12) {
+    @IBInspectable open var textFont: UIFont = .systemFont(ofSize: 12) {
         didSet {
             titleLabel?.font = textFont
         }
@@ -216,3 +216,13 @@ open class TagView: UIButton {
         }
     }
 }
+
+/// Swift < 4.2 support
+#if !(swift(>=4.2))
+private extension NSAttributedString {
+    typealias Key = NSAttributedStringKey
+}
+private extension UIControl {
+    typealias State = UIControlState
+}
+#endif

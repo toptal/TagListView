@@ -324,15 +324,6 @@ open class TagListView: UIView {
         tagView.removeButtonIconSize = removeButtonIconSize
         tagView.enableRemoveButton = enableRemoveButton
         tagView.removeIconLineColor = removeIconLineColor
-        tagView.addTarget(self, action: #selector(tagPressed(_:)), for: .touchUpInside)
-        tagView.removeButton.addTarget(self, action: #selector(removeButtonPressed(_:)), for: .touchUpInside)
-
-        // On long press, deselect all tags except this one
-        tagView.onLongPress = { [unowned self] this in
-            self.tagViews.forEach {
-                $0.isSelected = $0 == this
-            }
-        }
 
         return tagView
     }
@@ -351,6 +342,16 @@ open class TagListView: UIView {
     open func addTagView(_ tagView: TagView) -> TagView {
         tagViews.append(tagView)
         tagBackgroundViews.append(UIView(frame: tagView.bounds))
+
+        tagView.addTarget(self, action: #selector(tagPressed(_:)), for: .touchUpInside)
+        tagView.removeButton.addTarget(self, action: #selector(removeButtonPressed(_:)), for: .touchUpInside)
+
+        // On long press, deselect all tags except this one
+        tagView.onLongPress = { [unowned self] this in
+            self.tagViews.forEach {
+                $0.isSelected = $0 == this
+            }
+        }
         
         return tagView
     }

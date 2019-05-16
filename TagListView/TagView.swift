@@ -149,6 +149,9 @@ open class TagView: UIButton {
     }
     
     /// Handles Tap (TouchUpInside)
+
+    public let longPressGestureRecognizer = UILongPressGestureRecognizer()
+
     open var onTap: ((TagView) -> Void)?
     open var onLongPress: ((TagView) -> Void)?
     
@@ -173,9 +176,9 @@ open class TagView: UIButton {
         frame.size = intrinsicContentSize
         addSubview(removeButton)
         removeButton.tagView = self
-        
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(self.longPress))
-        self.addGestureRecognizer(longPress)
+
+        longPressGestureRecognizer.addTarget(self, action: #selector(longPress))
+        addGestureRecognizer(longPressGestureRecognizer)
     }
     
     @objc func longPress() {

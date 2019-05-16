@@ -87,7 +87,7 @@ open class TagView: UIButton {
         }
     }
     
-    private func reloadStyles() {
+    open func reloadStyles() {
         if isHighlighted {
             if let highlightedBackgroundColor = highlightedBackgroundColor {
                 // For highlighted, if it's nil, we should not fallback to backgroundColor.
